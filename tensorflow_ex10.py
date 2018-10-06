@@ -37,6 +37,7 @@ Y_ = np.vstack(Y_).reshape(-1, 1)
 plt.scatter(X[:, 0], X[:, 1], c=np.squeeze(Y_c))
 plt.show()
 
+
 # 定义神经网络的输入、参数和输出，定义前向传播过程
 def get_weight(shape, regularizer):
     w = tf.Variable(tf.random_normal(shape), dtype=tf.float32)
@@ -44,9 +45,11 @@ def get_weight(shape, regularizer):
                          tf.contrib.layers.l2_regularizer(regularizer)(w))
     return w
 
+
 def get_bias(shape):
     b = tf.Variable(tf.constant(0.01, shape=shape))
     return b
+
 
 x = tf.placeholder(tf.float32, shape=(None, 2))
 y_ = tf.placeholder(tf.float32, shape=(None, 1))
@@ -121,6 +124,6 @@ with tf.Session() as sess:
     print("w2:\n" + str(sess.run(w2)))
     print("b2:\n" + str(sess.run(b2)))
 
-plt.scatter(X[:,0], X[:,1], c=np.squeeze(Y_c))
+plt.scatter(X[:, 0], X[:, 1], c=np.squeeze(Y_c))
 plt.contour(xx, yy, probs, levels=[.5])
 plt.show()

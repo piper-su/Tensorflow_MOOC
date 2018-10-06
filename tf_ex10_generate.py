@@ -4,11 +4,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 seed = 2
-def generateds():
+def generateds(sample_num, feature_num):
     # 基于seed产生随机数
     rdm = np.random.RandomState(seed)
     # 随机数返回300x2的矩阵，表示300组坐标点作为输入数据集
-    X = rdm.randn(300, 2)
+    X = rdm.randn(sample_num, feature_num)
     # 从X这300X2的矩阵中取出一行，判断如果两个坐标平方和小于2，给Y赋值为1，否则赋值为0
     # 作为输入数据集的标签（正确答案）
     Y_ = [int(x0**2+x1**2<2) for (x0, x1) in X]
